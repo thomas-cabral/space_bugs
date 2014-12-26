@@ -1,0 +1,33 @@
+<head>
+  <title>space_bugs</title>
+</head>
+
+<body>
+<div class="container">
+  <h1>Welcome to Meteor!</h1>
+  {{> loginButtons}}
+
+  {{> insertCaseForm}}
+  
+  <ul>
+    {{#each cases}}
+      {{> caseTemplate}}
+    {{/each}}
+  </ul>
+</div>
+</body>
+
+<template name="insertCaseForm">
+  {{ #autoForm collection="Cases" id="insertCaseForm" type="insert"}}
+    <fieldset>
+      <legend>Add a Case</legend>
+      {{> afQuickField name='title'}}
+      {{> afQuickField name='body' rows=6}}
+    </fieldset>
+    <button type="submit" class="btn btn-primary">Insert</button>
+  {{/autoForm}}
+</template>
+
+<template name="caseTemplate">
+  <li>{{title}} - {{body}} - {{createdBy}}</li>
+</template>
